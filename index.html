@@ -75,6 +75,21 @@ body{
 .chip[aria-pressed="true"]{border-color:var(--violet);color:var(--violet);background:var(--violet-soft);font-weight:600}
 .chip b{font-weight:700;margin-left:3px}
 
+/* focus 输入 */
+.focus{padding:14px 0 4px}
+.focus-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.focus-label{color:var(--ink);font-size:13px;font-weight:700}
+.focus-hint{color:var(--soft);font-size:11px}
+.focus-row{display:flex;gap:8px}
+.focus-input{flex:1;min-width:0;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-size:13.5px;outline:none}
+.focus-input:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(118,101,223,.12)}
+.focus-add{flex:none;border:0;border-radius:10px;padding:0 16px;background:var(--violet);color:#fff;font-size:13.5px;font-weight:600;cursor:pointer}
+.focus-add:active{transform:scale(.98)}
+.focus-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.fchip{display:inline-flex;align-items:center;gap:4px;border:1px solid #c8bffa;border-radius:999px;padding:4px 6px 4px 11px;background:var(--violet-soft);color:var(--violet);font-size:12px;cursor:pointer}
+.fchip button{border:0;background:transparent;color:var(--violet);font-size:13px;line-height:1;padding:2px 5px;cursor:pointer;opacity:.7}
+.fchip button:hover{opacity:1}
+
 /* feed */
 .feed{display:grid;gap:12px;padding-top:16px}
 .card{position:relative;overflow:hidden;padding:18px 20px 14px 22px;border:1px solid var(--line);border-radius:15px;background:var(--card);box-shadow:var(--shadow);
@@ -162,6 +177,18 @@ mark{background:rgba(237,177,84,.35);color:inherit;border-radius:3px;padding:0 1
     <input class="search" id="q" type="search" placeholder="搜索标题、摘要、影响、来源…" autocomplete="off">
   </div>
 
+  <section class="focus" id="focus">
+    <div class="focus-head">
+      <span class="focus-label">我想重点关注</span>
+      <span class="focus-hint" id="focus-hint">添加后，明天的推送会把它排在最前面</span>
+    </div>
+    <div class="focus-row">
+      <input class="focus-input" id="focus-input" placeholder="例如：亚太会议、英伟达财报、油价" autocomplete="off">
+      <button class="focus-add" id="focus-add" type="button">添加</button>
+    </div>
+    <div class="focus-chips" id="focus-chips"></div>
+  </section>
+
   <div class="watch" id="watch" hidden>
     <span class="watch-label">重点关注</span>
   </div>
@@ -180,7 +207,7 @@ mark{background:rgba(237,177,84,.35);color:inherit;border-radius:3px;padding:0 1
 </div>
 
 <script>
-const DATA = {"updatedAt":"2026-11-18T21:51:54+08:00","generatedAt":"2026-11-18T21:51:55+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["APEC","芯片","英伟达","油价","中美"],"items":[{"kind":"alert","title":"习近平深圳迎接特朗普，中美俄将举行三方会晤","summary":"11月18日，习近平在深圳机场迎接特朗普，为中国自1980年以来首次由国家最高领导人亲赴机场迎接外国元首。特朗普、习近平与普京将在APEC深圳峰会期间举行三国首脑首次三方会晤，这也是特朗普今年第三次与习近平面对面会谈。","impact":"对读者意味着：中美俄高层互动与APEC议程将影响全球市场情绪、芯片出口管制与地缘风险定价，需关注会晤实质成果而非仅看礼仪场面。","nextStep":"盯三方会晤联合表态及中美芯片、贸易相关措辞。","urgency":"high","source":"BBC 中文","sourceUrl":"https://www.bbc.com/zhongwen/articles/cjy5xkw9g1zpo/trad?at_medium=RSS&at_campaign=rss","publishedAt":"2026-11-18T21:21:40+08:00","hits":["APEC","芯片","中美"]},{"kind":"brief","title":"腾讯Q3营收2073亿元，芯片限制拖慢下一代模型","summary":"腾讯2026年第三季度营收2073亿元，同比增长8%。公司称受芯片限制影响，训练下一代模型将需要更长时间。混元Hy4发布时位列Agent Arena中国模型第一，WorkBuddy日活超1000万，云服务收入同比增35%。微信小微DAU达3000万；Q3负自由现金流691亿元，主要因算力采购等资本开支付款651亿元。","impact":"对读者意味着：腾讯AI应用已形成规模用户，但芯片供应约束可能推迟模型迭代节奏，并推高短期资本开支压力。","nextStep":"关注腾讯下一代混元模型发布时间及算力采购预付款变化。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/066.htm","publishedAt":"2026-11-18T20:56:31+08:00","hits":["芯片"]},{"kind":"alert","title":"Java曝高危漏洞，美韩紧急呼吁安装更新","summary":"Java编程语言曝出安全漏洞，黑客可能远程执行恶意代码甚至导致系统崩溃。美国CISA要求立即修复，韩国总统办公室17日紧急召集会议，科学技术信息通信部等要求公共机构及企业尽快安装补丁。甲骨文11月17日发布的JDK更新已包含修复程序。韩国Java使用率约53%，公共部门政府信息系统占比达72%。","impact":"对读者意味着：大量政府、金融和企业后端系统依赖Java，未打补丁的服务器面临远程入侵风险，个人账户数据也可能受影响。","nextStep":"核对所用Java版本并尽快应用甲骨文11月17日更新，关注后续利用迹象。","urgency":"high","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/046.htm","publishedAt":"2026-11-18T19:52:02+08:00","hits":[]},{"kind":"brief","title":"GTA 6发售，M站99分追平历史最高","summary":"《GTA 6》于11月19日0点在中国大陆及港澳台地区解锁，登陆PS5与Xbox Series X|S。Metacritic收录114家媒体评测，综合评分99分，追平《塞尔达传说：时之笛》并列史上第一；IGN打出10分满分。游戏在标准版PS5高负载场景最低跌至23帧，PS5 Pro目标帧率为30帧，不提供60帧模式。","impact":"对读者意味着：这不仅是游戏消费事件，也反映当前主机硬件性能边界与大型内容产品的评分、营销效应。","nextStep":"关注首周销量与主机性能补丁是否改善帧率表现。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/038.htm","publishedAt":"2026-11-18T19:21:05+08:00","hits":[]},{"kind":"brief","title":"Anthropic拟明日上市，估值最高1.4万亿美元","summary":"华尔街正为Anthropic可能创纪录的IPO造势，预期其于当地时间19日登陆公开市场，估值最高达1.4万亿美元。金融机构推出挂钩产品、举办客户活动，GraniteShares计划下周推出2倍做多和2倍做空ETF。尽管AI概念股近期遭抛售，散户申购热情仍高，有机构称热度可能超过SpaceX。","impact":"对读者意味着：AI龙头上市定价将成为观察AI资产估值和散户风险偏好的风向标，也可能影响整个AI板块情绪。","nextStep":"盯上市首日定价、认购倍数及AI板块联动反应。","urgency":"high","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/015.htm","publishedAt":"2026-11-18T18:45:07+08:00","hits":[]},{"kind":"alert","title":"Optimizely遭入侵，178家知名网站传播恶意程序","summary":"用于网页A/B测试的Optimizely遭黑客入侵，攻击者篡改网站加载的JavaScript代码，向访客植入恶意程序。至少178个网站受影响，包括BBC、CNN、Zoom、宜家、Salesforce、汇丰银行和TalkTalk。黑客利用OPTIMJACK漏洞植入恶意代码，可篡改加密货币钱包地址、窃取支付卡信息、Cookie和屏幕截图。Optimizely称已修复漏洞并通知客户。","impact":"对读者意味着：访问知名网站也可能中招，尤其是支付和加密钱包信息面临被窃取风险，浏览器端第三方脚本成为关键攻击面。","nextStep":"关注Optimizely客户名单及是否有针对个人用户的恶意域名拦截更新。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85920","publishedAt":"2026-11-18T17:12:05+08:00","hits":[]},{"kind":"alert","title":"美国连串技术故障，起因是批量修复AI发现漏洞","summary":"过去几天美国出现全国航班停飞、银行在线服务中断，甚至NSA一个机密通信网络瘫痪。华尔街高管和NSA告诉国会议员，起因是AI模型识别大量漏洞后，为尽快修复而一次性推送大量补丁，超出系统设计承载能力。摩根大通将银行服务中断归咎于软件bug，NSA称部分网络短暂性能下降源于例行维护。","impact":"对读者意味着：AI辅助漏洞发现正在把“修复速度”变成新的系统性风险，关键基础设施的补丁管理需要更谨慎的节奏与回滚能力。","nextStep":"盯美国监管机构是否要求对AI驱动补丁流程进行审查或限速。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85918","publishedAt":"2026-11-18T15:19:35+08:00","hits":[]},{"kind":"alert","title":"英伟达董事会拒绝黄仁勋复职","summary":"英伟达董事会主席Harvey Jones在财报电话会上表示，董事会已一致接受黄仁勋辞呈，不打算让其复任CEO。此前约19.7万人签署请愿书，美国总统和多位硅谷名人支持其回归，黄仁勋本人也声明愿重返岗位并承认个人生活中犯下严重错误。微软高管称部分客户可能因此寻求AI芯片替代方案。","impact":"对读者意味着：英伟达管理层动荡可能改变AI芯片供应格局与客户议价空间，并波及中美科技政策讨论。","nextStep":"关注英伟达临时管理层安排及大客户是否公开调整采购计划。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85917","publishedAt":"2026-11-18T14:44:33+08:00","hits":["芯片","英伟达","中美"]}]};
+const DATA = {"updatedAt":"2026-11-18T22:51:52+08:00","generatedAt":"2026-11-18T22:51:52+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["亚太会议","APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"alert","title":"习近平赴机场迎接特朗普 系46年来首次","summary":"据BBC中文报道，习近平在深圳机场亲自迎接前来出席APEC峰会的特朗普。这是中国自1980年以来首次由最高领导人赴机场迎接外国元首；1980年前，华国锋、毛泽东曾多次赴机场迎接外国领袖。","impact":"接待规格常被外界当作双边关系冷暖的直接信号，对关注中美互动走向以及后续经贸、科技议题的人来说，这次会晤的礼节安排可作为判断基调的参考。","nextStep":"关注两国元首会谈后是否发布联合表态或具体成果清单。","urgency":"high","source":"BBC 中文","sourceUrl":"https://www.bbc.com/zhongwen/articles/cjy5xkw9g1zpo/trad?at_medium=RSS&at_campaign=rss","publishedAt":"2026-11-18T21:21:40+08:00","hits":["APEC","中美"]},{"kind":"brief","title":"英伟达董事会拒绝黄仁勋复职","summary":"据Solidot报道，尽管美国总统和多位硅谷名人表示支持，黄仁勋本人也发表声明称准备重返岗位，但英伟达董事长Harvey Jones在财报电话会议上明确表示，董事会已一致接受他的辞呈，不打算让他恢复首席执行官职务。黄仁勋承认自己在个人生活中犯下严重错误。","impact":"公司最高层的更替已经定局，但与他离职相关的争议仍在华盛顿和硅谷发酵，可能影响外界对英伟达政策关系以及客户融资安排连续性的判断。","nextStep":"关注新任CEO人选，以及英伟达对OpenAI等客户贷款担保政策的后续表态。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85917","publishedAt":"2026-11-18T14:44:33+08:00","hits":["英伟达"]},{"kind":"brief","title":"英伟达丑闻加深白宫对华AI政策分歧","summary":"纽约时报报道，特朗普承认财政部长贝森特与商务部长卢特尼克存在分歧，争论焦点是应采取多严厉的措施，堵住中国通过其他国家数据中心获取先进AI芯片的漏洞。特朗普表示不想“冒犯中国”，并试图淡化黄仁勋事件的国家安全风险。","impact":"这说明美国对华芯片管制的内部口径尚未统一，短期内规则调整的可能性上升，涉及AI算力采购与供应链的读者需为政策反复留出余地。","nextStep":"观察白宫在峰会前后是否公布新的芯片出口或第三国转口限制细则。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/usa/20261118/trump-china-ai-chip-policy/?utm_source=RSS","publishedAt":"2026-11-18T10:04:56+08:00","hits":["芯片","英伟达"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散APEC议程焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办APEC峰会展示中国的科技雄心，证明中国增长可以惠及世界；但黄仁勋丑闻、针对北京的间谍指控以及各国对贸易失衡的担忧，可能转移外界注意力。报道称，中国也需要缓解其他国家的贸易担忧。","impact":"峰会的实质成果可能被场外争议冲淡，关注政策信号的读者宜把官方发布的合作文件与场外舆论分开判断。","nextStep":"看峰会将签署哪些具体合作文件，以及各方在贸易失衡问题上的措辞变化。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC"]},{"kind":"brief","title":"美国封堵中企在东南亚租用AI算力的途径","summary":"BBC中文报道，在美国限制最先进英伟达芯片直接销往中国的背景下，中国大型互联网公司和AI实验室转向“只租算力、不买硬件”模式：芯片部署在第三国数据中心，企业通过互联网远程调用算力训练模型，无须将硬件运入中国。相关封堵在特朗普访华之际推进。","impact":"如果封堵措施落地，依赖海外算力租用的模型训练计划可能面临中断或成本上升，需要提前评估可替代的算力来源。","nextStep":"关注美方是否出台针对第三国数据中心算力租用的认定标准与执行时间。","urgency":"medium","source":"BBC 中文","sourceUrl":"https://www.bbc.com/zhongwen/articles/cmpdwn010nyvo/trad?at_medium=RSS&at_campaign=rss","publishedAt":"2026-11-17T19:37:12+08:00","hits":["芯片","英伟达"]},{"kind":"brief","title":"腾讯WorkBuddy最近七天收入年化超5亿美元","summary":"腾讯总裁刘炽平在分析师会上透露，WorkBuddy最近七天收入按年化折算超过5亿美元，是腾讯会议的两倍以上，三季度收入是第二季度的5倍以上，中国百强企业已有60%成为其客户。截至11月初，该产品日活跃用户超过1000万，日均Token调用量超过100万亿。","impact":"企业级AI应用出现了可量化的付费规模，对关心AI投入能否转化为实际收入的读者来说，这是一个值得跟踪的观察样本。","nextStep":"关注下季度财报中该产品的收入披露口径与客户续费情况。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/110.htm","publishedAt":"2026-11-18T22:15:02+08:00","hits":[]},{"kind":"alert","title":"高危漏洞Java4Shell可致远程代码执行","summary":"新公开的高危漏洞Java4Shell源自OpenJDK Base64解码器的内存损坏问题，CVSS 4.0评分9.2/10。该漏洞在Keycloak、Jira、Confluence、JFrog、Jenkins和PingFederate等系统中可导致无需身份验证的远程代码执行；在Apache Kafka、Solr、ElasticSearch等系统中可导致认证后的远程代码执行。美国和韩国当局已呼吁用户尽快安装更新。","impact":"政务、金融、军方和企业的许多关键信息系统都用Java构建，暴露面大，相关运维人员需要尽快排查并部署补丁，以免被批量扫描利用。","nextStep":"核对资产清单中的受影响组件版本，确认11月17日发布的Java开发工具包更新已部署到位。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]},{"kind":"brief","title":"中加达成贸易协议 进一步削减关税","summary":"纽约时报中文网报道，加拿大总理卡尼与中国领导人习近平在深圳会晤，两国达成贸易协议并进一步削减关税。报道称，协议与两国领导人展现出的友好关系，与当前加美关系形成对比；卡尼上任以来一直推动经贸关系多元化、减少对美国的依赖。","impact":"对关注北美市场与供应链的读者来说，加拿大对华关税松动可能改变部分商品的成本与转口路径，但降税范围和生效时间尚不明确。","nextStep":"等待双方公布降税商品清单与生效时间表。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":[]}]};
 
 const S = { filter: "all", q: "", kw: null, expanded: new Set() };
 const $ = (id) => document.getElementById(id);
@@ -375,6 +402,63 @@ $("q").addEventListener("input", (e) => { S.q = e.target.value.trim(); render();
 $("foot-date").textContent = DATA.generatedAt ? `生成于 ${fmtTime(DATA.generatedAt, true)}` : "";
 $("subtitle").textContent = DATA.tagline || "重要的事，清楚地摆在眼前。";
 
+/* 重点关注：本机保存 + 一键提交到 GitHub issue */
+const FOCUS_KEY = "briefing.focus.local";
+let localFocus = [];
+try { localFocus = JSON.parse(store.get(FOCUS_KEY) || "[]"); } catch { localFocus = []; }
+if (!Array.isArray(localFocus)) localFocus = [];
+
+function persistFocus() { store.set(FOCUS_KEY, JSON.stringify(localFocus)); }
+
+function issueUrl(topic) {
+  const r = DATA.repo || {};
+  if (!r.owner || !r.repo) return "";
+  const t = encodeURIComponent("关注：" + topic);
+  const b = encodeURIComponent("由看板添加。关闭这个 issue 就会停止重点关注。");
+  return `https://github.com/${r.owner}/${r.repo}/issues/new?labels=focus&title=${t}&body=${b}`;
+}
+
+function renderFocus() {
+  const box = $("focus-chips");
+  box.innerHTML = "";
+  localFocus.forEach((t) => {
+    const chip = document.createElement("span");
+    chip.className = "fchip";
+    chip.innerHTML = esc(t) + ' <button type="button" title="移除">×</button>';
+    chip.querySelector("button").onclick = (e) => {
+      e.stopPropagation();
+      localFocus = localFocus.filter((x) => x !== t);
+      persistFocus();
+      renderFocus();
+    };
+    chip.onclick = () => { S.q = t; $("q").value = t; render(); };
+    box.appendChild(chip);
+  });
+}
+
+$("focus-add").onclick = () => {
+  const input = $("focus-input");
+  const topic = input.value.trim();
+  if (!topic) return;
+  if (!localFocus.includes(topic)) localFocus.push(topic);
+  persistFocus();
+  renderFocus();
+  input.value = "";
+  const url = issueUrl(topic);
+  if (url) {
+    window.open(url, "_blank", "noopener");
+    $("focus-hint").textContent = "已打开 GitHub，点 Submit new issue 提交后才对明天的推送生效";
+  } else {
+    $("focus-hint").textContent = "已添加，仅在本机筛选生效";
+  }
+  S.q = topic;
+  $("q").value = topic;
+  render();
+};
+$("focus-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") $("focus-add").click();
+});
+
 /* 任何未捕获的脚本错误都显示出来，别再让它静默变成"0 条" */
 addEventListener("error", (e) => {
   const box = $("empty");
@@ -384,6 +468,7 @@ addEventListener("error", (e) => {
   $("empty-text").textContent = String(e.message || e.error || "未知错误");
 });
 
+renderFocus();
 renderWatch();
 render();
 store.set(LAST_KEY, String(Date.now()));
