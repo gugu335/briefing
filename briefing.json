@@ -1,10 +1,8 @@
 {
   "updatedAt": "2026-11-19T11:40:08+08:00",
-  "generatedAt": "2026-11-19T11:40:09+08:00",
+  "generatedAt": "2026-11-19T11:45:32+08:00",
   "tagline": "重要的事，清楚地摆在眼前。",
   "keywords": [
-    "亚太会议",
-    "APEX",
     "APEC",
     "芯片",
     "英伟达",
@@ -18,16 +16,16 @@
   "items": [
     {
       "kind": "brief",
-      "title": "习近平与高市早苗简短会面，中日关系无解冻迹象",
-      "summary": "在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。",
-      "impact": "对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。",
-      "nextStep": "关注双方是否安排正式双边会晤，以及后续外交部门的表态。",
-      "urgency": "high",
-      "source": "纽约时报中文网",
-      "sourceUrl": "https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS",
-      "publishedAt": "2026-11-19T10:37:31+08:00",
+      "title": "彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者",
+      "summary": "彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。",
+      "impact": "对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。",
+      "nextStep": "关注英伟达董事会的正式决定与临时 CEO 的公开表态。",
+      "urgency": "medium",
+      "source": "IT之家",
+      "sourceUrl": "https://www.ithome.com/1/029/207.htm",
+      "publishedAt": "2026-11-19T11:23:57+08:00",
       "hits": [
-        "亚太会议"
+        "英伟达"
       ]
     },
     {
@@ -42,7 +40,6 @@
       "publishedAt": "2026-11-19T09:52:31+08:00",
       "hits": [
         "中美",
-        "亚太会议",
         "芯片"
       ]
     },
@@ -57,9 +54,7 @@
       "sourceUrl": "https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS",
       "publishedAt": "2026-11-19T09:49:06+08:00",
       "hits": [
-        "APEC",
-        "APEX",
-        "亚太会议"
+        "APEC"
       ]
     },
     {
@@ -73,8 +68,7 @@
       "sourceUrl": "https://www.ithome.com/1/029/144.htm",
       "publishedAt": "2026-11-19T07:53:51+08:00",
       "hits": [
-        "APEC",
-        "APEX"
+        "APEC"
       ]
     },
     {
@@ -88,8 +82,7 @@
       "sourceUrl": "https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS",
       "publishedAt": "2026-11-18T09:25:24+08:00",
       "hits": [
-        "中美",
-        "亚太会议"
+        "中美"
       ]
     },
     {
@@ -103,24 +96,20 @@
       "sourceUrl": "https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS",
       "publishedAt": "2026-11-18T07:19:40+08:00",
       "hits": [
-        "APEC",
-        "APEX",
-        "亚太会议"
+        "APEC"
       ]
     },
     {
       "kind": "brief",
-      "title": "彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者",
-      "summary": "彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。",
-      "impact": "对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。",
-      "nextStep": "关注英伟达董事会的正式决定与临时 CEO 的公开表态。",
-      "urgency": "medium",
-      "source": "IT之家",
-      "sourceUrl": "https://www.ithome.com/1/029/207.htm",
-      "publishedAt": "2026-11-19T11:23:57+08:00",
-      "hits": [
-        "英伟达"
-      ]
+      "title": "习近平与高市早苗简短会面，中日关系无解冻迹象",
+      "summary": "在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。",
+      "impact": "对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。",
+      "nextStep": "关注双方是否安排正式双边会晤，以及后续外交部门的表态。",
+      "urgency": "high",
+      "source": "纽约时报中文网",
+      "sourceUrl": "https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS",
+      "publishedAt": "2026-11-19T10:37:31+08:00",
+      "hits": []
     },
     {
       "kind": "alert",
