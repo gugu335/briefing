@@ -90,6 +90,33 @@ body{
 .fchip button{border:0;background:transparent;color:var(--violet);font-size:13px;line-height:1;padding:2px 5px;cursor:pointer;opacity:.7}
 .fchip button:hover{opacity:1}
 
+/* AI 面板 */
+.ai-fab{position:fixed;right:18px;bottom:18px;z-index:40;border:0;border-radius:999px;padding:12px 18px;
+  background:linear-gradient(145deg,#8a79f0,#5d59c8);color:#fff;font-size:14px;font-weight:700;
+  box-shadow:0 10px 26px rgba(93,89,200,.38);cursor:pointer}
+.ai-fab:active{transform:scale(.97)}
+.ai-panel{position:fixed;right:18px;bottom:78px;z-index:41;width:min(400px,calc(100vw - 28px));
+  max-height:min(70vh,620px);display:flex;flex-direction:column;border:1px solid var(--line);
+  border-radius:16px;background:var(--card);box-shadow:0 22px 60px rgba(20,26,50,.22);overflow:hidden}
+.ai-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);font-size:13.5px}
+.ai-x{border:0;background:transparent;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:2px 6px}
+.ai-log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:180px}
+.ai-msg{max-width:88%;padding:9px 12px;border-radius:12px;font-size:13px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.ai-msg.bot{align-self:flex-start;background:var(--impact);color:var(--muted);border-bottom-left-radius:4px}
+.ai-msg.me{align-self:flex-end;background:var(--violet);color:#fff;border-bottom-right-radius:4px}
+.ai-msg.err{align-self:flex-start;background:rgba(217,84,97,.12);color:var(--red)}
+.ai-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+.ai-form input{flex:1;min-width:0;padding:9px 11px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:inherit;font-size:13px;outline:none}
+.ai-form input:focus{border-color:var(--violet)}
+.ai-form button{border:0;border-radius:9px;padding:0 14px;background:var(--violet);color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+.ai-form button:disabled{opacity:.5;cursor:default}
+.ai-set{padding:8px 12px 12px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.ai-set summary{cursor:pointer;color:var(--muted)}
+.ai-set label{display:block;margin-top:8px}
+.ai-set input{display:block;width:100%;margin-top:4px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:12px;outline:none}
+.ai-set button{margin-top:9px;border:0;border-radius:8px;padding:6px 12px;background:var(--violet-soft);color:var(--violet);font-size:12px;font-weight:600;cursor:pointer}
+.ai-tip{margin:8px 0 0;font-size:11px;color:var(--soft)}
+
 /* feed */
 .feed{display:grid;gap:12px;padding-top:16px}
 .card{position:relative;overflow:hidden;padding:18px 20px 14px 22px;border:1px solid var(--line);border-radius:15px;background:var(--card);box-shadow:var(--shadow);
@@ -206,8 +233,31 @@ mark{background:rgba(237,177,84,.35);color:inherit;border-radius:3px;padding:0 1
   </footer>
 </div>
 
+<button class="ai-fab" id="ai-fab" type="button" aria-label="问 AI">问 AI</button>
+
+<div class="ai-panel" id="ai-panel" hidden>
+  <header class="ai-head">
+    <b>晨报助理</b>
+    <button class="ai-x" id="ai-close" type="button" aria-label="关闭">×</button>
+  </header>
+  <div class="ai-log" id="ai-log">
+    <div class="ai-msg bot">问我今天的新闻，或者说「以后多关注日本政局」，我会帮你调整。</div>
+  </div>
+  <form class="ai-form" id="ai-form">
+    <input id="ai-input" placeholder="问点什么…" autocomplete="off">
+    <button type="submit" id="ai-send">发送</button>
+  </form>
+  <details class="ai-set">
+    <summary>设置</summary>
+    <label>DeepSeek Key<input id="ai-key" type="password" placeholder="sk-..." autocomplete="off"></label>
+    <label>GitHub Token（可选，自动同步关注）<input id="ai-gh" type="password" placeholder="ghp_..." autocomplete="off"></label>
+    <button type="button" id="ai-save">保存</button>
+    <p class="ai-tip">Key 只存在这台设备的浏览器里，不会上传到任何地方。</p>
+  </details>
+</div>
+
 <script>
-const DATA = {"updatedAt":"2026-11-19T11:40:08+08:00","generatedAt":"2026-11-19T11:40:09+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["亚太会议","APEX","APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"brief","title":"习近平与高市早苗简短会面，中日关系无解冻迹象","summary":"在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。","impact":"对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。","nextStep":"关注双方是否安排正式双边会晤，以及后续外交部门的表态。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS","publishedAt":"2026-11-19T10:37:31+08:00","hits":["亚太会议"]},{"kind":"brief","title":"特朗普抵达深圳，习近平到机场迎接","summary":"11 月 19 日，特朗普抵达深圳宝安国际机场，习近平到机场迎接，两人在红毯上握手拥抱。报道称这是习近平十多年来首次亲自到机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。","impact":"对读者的直接含义是：中美俄三方互动与峰会议程将影响贸易、芯片出口管制与市场情绪，任何措辞变化都可能被放大解读，值得比平时更密切关注官方通稿。","nextStep":"紧盯三方会晤是否有共同表态，以及会后双方各自发布的通稿措辞。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/trump-xi-shenzhen-spy-scandal/?utm_source=RSS","publishedAt":"2026-11-19T09:52:31+08:00","hits":["中美","亚太会议","芯片"]},{"kind":"brief","title":"APEC 峰会期间深圳停课、居家办公，居民离城","summary":"为配合在深圳主办的亚太经合组织峰会，当地学校本周停课，地方政府指示企业员工居家办公，不少居民离开这座城市。峰会期间多条道路封闭，安保举措尤为严密。","impact":"对读者的实际影响是出行与工作安排：在深圳或近期计划前往的读者需要预留通行时间，留意临时交通管制和办公、上学安排的调整。","nextStep":"关注峰会结束后的交通恢复与复工复课通知。","urgency":"low","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS","publishedAt":"2026-11-19T09:49:06+08:00","hits":["APEC","APEX","亚太会议"]},{"kind":"brief","title":"谷歌发布 Gemini 4 Neon，编程智能体指数登顶","summary":"谷歌 11 月 18 日推出 AI 模型 Gemini 4 Neon，主攻复杂编程、科学研究和企业工作流程。API 每百万词元输入 3 美元、输出 15 美元，缓存输入 0.15 美元，支持 100 万 token 上下文和四档推理级别。在 Artificial Analysis 编程智能体指数以 58.6 分排名第一，智能指数以 61 分位列第三。","impact":"对读者的含义是：模型选型多了一个更低价的高能力选项，若正在为编程或文档处理类任务付费，现有成本结构可能需要重新评估；不过榜单分数与实际生产表现仍有差距。","nextStep":"关注真实任务基准结果、可用地区与调用限流规则。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/144.htm","publishedAt":"2026-11-19T07:53:51+08:00","hits":["APEC","APEX"]},{"kind":"brief","title":"中加领导人在深圳会晤，达成贸易协议削减关税","summary":"中加两国领导人周二在深圳会晤，达成贸易协议并进一步削减关税，两国关系升温。报道称，这一局面与当前的加美关系形成鲜明对比。加拿大总理卡尼上任以来一直致力于推动本国经济和政治关系多元化，减少对美国的依赖。","impact":"对读者意味着中加在农产品、能源等品类的贸易条件可能改善，相关进口成本与供应格局会随之调整；同时这也被视为中等强国在中美之间重新配置关系的信号。","nextStep":"关注协议的具体清单、降税时间表与执行细则的公布。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":["中美","亚太会议"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散 APEC 峰会焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办的亚太经合组织峰会展示中国的科技雄心、证明增长可以惠及世界。但黄仁勋相关丑闻和对北京的间谍指控可能转移外界注意力，中国同时需要缓解其他国家的贸易担忧。","impact":"对读者意味着峰会的经济叙事可能被安全议题牵制，外界对科技与贸易议题的关注重点可能偏离原定议程，解读峰会成果时需要区分象征性表态与实质安排。","nextStep":"关注峰会对贸易与科技议题的正式表述，及其与场外争议的相互影响。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC","APEX","亚太会议"]},{"kind":"brief","title":"彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者","summary":"彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。","impact":"对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。","nextStep":"关注英伟达董事会的正式决定与临时 CEO 的公开表态。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/207.htm","publishedAt":"2026-11-19T11:23:57+08:00","hits":["英伟达"]},{"kind":"alert","title":"高危漏洞 Java4Shell 可致远程代码执行","summary":"新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏问题，CVSS 4.0 评分 9.2/10。该漏洞会在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等组件中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。","impact":"对读者意味着只要线上服务用到相关 Java 组件，就可能面临被直接入侵的风险；这类漏洞通常在公开后数小时内就会被扫描利用，拖延修补的代价远高于停机窗口。","nextStep":"先确认所用组件与版本是否在受影响范围内，盯官方补丁和修复指引的发布。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]}]};
+const DATA = {"updatedAt":"2026-11-19T11:40:08+08:00","generatedAt":"2026-11-19T11:45:32+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"brief","title":"彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者","summary":"彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。","impact":"对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。","nextStep":"关注英伟达董事会的正式决定与临时 CEO 的公开表态。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/207.htm","publishedAt":"2026-11-19T11:23:57+08:00","hits":["英伟达"]},{"kind":"brief","title":"特朗普抵达深圳，习近平到机场迎接","summary":"11 月 19 日，特朗普抵达深圳宝安国际机场，习近平到机场迎接，两人在红毯上握手拥抱。报道称这是习近平十多年来首次亲自到机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。","impact":"对读者的直接含义是：中美俄三方互动与峰会议程将影响贸易、芯片出口管制与市场情绪，任何措辞变化都可能被放大解读，值得比平时更密切关注官方通稿。","nextStep":"紧盯三方会晤是否有共同表态，以及会后双方各自发布的通稿措辞。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/trump-xi-shenzhen-spy-scandal/?utm_source=RSS","publishedAt":"2026-11-19T09:52:31+08:00","hits":["中美","芯片"]},{"kind":"brief","title":"APEC 峰会期间深圳停课、居家办公，居民离城","summary":"为配合在深圳主办的亚太经合组织峰会，当地学校本周停课，地方政府指示企业员工居家办公，不少居民离开这座城市。峰会期间多条道路封闭，安保举措尤为严密。","impact":"对读者的实际影响是出行与工作安排：在深圳或近期计划前往的读者需要预留通行时间，留意临时交通管制和办公、上学安排的调整。","nextStep":"关注峰会结束后的交通恢复与复工复课通知。","urgency":"low","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS","publishedAt":"2026-11-19T09:49:06+08:00","hits":["APEC"]},{"kind":"brief","title":"谷歌发布 Gemini 4 Neon，编程智能体指数登顶","summary":"谷歌 11 月 18 日推出 AI 模型 Gemini 4 Neon，主攻复杂编程、科学研究和企业工作流程。API 每百万词元输入 3 美元、输出 15 美元，缓存输入 0.15 美元，支持 100 万 token 上下文和四档推理级别。在 Artificial Analysis 编程智能体指数以 58.6 分排名第一，智能指数以 61 分位列第三。","impact":"对读者的含义是：模型选型多了一个更低价的高能力选项，若正在为编程或文档处理类任务付费，现有成本结构可能需要重新评估；不过榜单分数与实际生产表现仍有差距。","nextStep":"关注真实任务基准结果、可用地区与调用限流规则。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/144.htm","publishedAt":"2026-11-19T07:53:51+08:00","hits":["APEC"]},{"kind":"brief","title":"中加领导人在深圳会晤，达成贸易协议削减关税","summary":"中加两国领导人周二在深圳会晤，达成贸易协议并进一步削减关税，两国关系升温。报道称，这一局面与当前的加美关系形成鲜明对比。加拿大总理卡尼上任以来一直致力于推动本国经济和政治关系多元化，减少对美国的依赖。","impact":"对读者意味着中加在农产品、能源等品类的贸易条件可能改善，相关进口成本与供应格局会随之调整；同时这也被视为中等强国在中美之间重新配置关系的信号。","nextStep":"关注协议的具体清单、降税时间表与执行细则的公布。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":["中美"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散 APEC 峰会焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办的亚太经合组织峰会展示中国的科技雄心、证明增长可以惠及世界。但黄仁勋相关丑闻和对北京的间谍指控可能转移外界注意力，中国同时需要缓解其他国家的贸易担忧。","impact":"对读者意味着峰会的经济叙事可能被安全议题牵制，外界对科技与贸易议题的关注重点可能偏离原定议程，解读峰会成果时需要区分象征性表态与实质安排。","nextStep":"关注峰会对贸易与科技议题的正式表述，及其与场外争议的相互影响。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC"]},{"kind":"brief","title":"习近平与高市早苗简短会面，中日关系无解冻迹象","summary":"在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。","impact":"对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。","nextStep":"关注双方是否安排正式双边会晤，以及后续外交部门的表态。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS","publishedAt":"2026-11-19T10:37:31+08:00","hits":[]},{"kind":"alert","title":"高危漏洞 Java4Shell 可致远程代码执行","summary":"新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏问题，CVSS 4.0 评分 9.2/10。该漏洞会在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等组件中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。","impact":"对读者意味着只要线上服务用到相关 Java 组件，就可能面临被直接入侵的风险；这类漏洞通常在公开后数小时内就会被扫描利用，拖延修补的代价远高于停机窗口。","nextStep":"先确认所用组件与版本是否在受影响范围内，盯官方补丁和修复指引的发布。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]}]};
 
 const S = { filter: "all", q: "", kw: null, expanded: new Set() };
 const $ = (id) => document.getElementById(id);
@@ -458,6 +508,131 @@ $("focus-add").onclick = () => {
 $("focus-input").addEventListener("keydown", (e) => {
   if (e.key === "Enter") $("focus-add").click();
 });
+
+/* ---------- 问 AI 面板 ---------- */
+const AI = { key: store.get("briefing.aiKey") || "", gh: store.get("briefing.ghToken") || "", busy: false };
+const panel = $("ai-panel"), logBox = $("ai-log");
+
+function openPanel(v) {
+  panel.hidden = !v;
+  if (v) setTimeout(() => $("ai-input").focus(), 60);
+}
+$("ai-fab").onclick = () => openPanel(panel.hidden);
+$("ai-close").onclick = () => openPanel(false);
+
+$("ai-key").value = AI.key;
+$("ai-gh").value = AI.gh;
+$("ai-save").onclick = () => {
+  AI.key = $("ai-key").value.trim();
+  AI.gh = $("ai-gh").value.trim();
+  store.set("briefing.aiKey", AI.key);
+  store.set("briefing.ghToken", AI.gh);
+  $("ai-save").textContent = "已保存";
+  setTimeout(() => { $("ai-save").textContent = "保存"; }, 1500);
+};
+
+function bubble(text, cls) {
+  const d = document.createElement("div");
+  d.className = "ai-msg " + cls;
+  d.textContent = text;
+  logBox.appendChild(d);
+  logBox.scrollTop = logBox.scrollHeight;
+  return d;
+}
+
+function briefingContext() {
+  const items = (DATA.items || []).slice(0, 8).map((it, i) =>
+    `${i + 1}. ${it.title}\n   摘要：${it.summary || "—"}\n   影响：${it.impact || "—"}`
+  ).join("\n");
+  const today = new Intl.DateTimeFormat("zh-CN", { timeZone: "Asia/Shanghai", dateStyle: "long" }).format(new Date());
+  return `今天是 ${today}。\n当前关注词：${(DATA.keywords || []).join("、") || "无"}\n今日简报：\n${items}`;
+}
+
+const AI_SYS = `你是这份晨报看板的助理。读者会问新闻相关问题，或让你调整关注方向。
+你可以返回一个动作让页面执行：
+{"type":"add_focus","topic":"要关注的主题"}
+{"type":"remove_focus","topic":"要取消的主题"}
+{"type":"none"}
+要求：
+- 只依据给出的今日简报回答，不编造新闻；
+- reply 用中文，简洁具体，可以引用条目编号；
+- 读者如果说"以后多关注 X / 不用再关注 Y"，就返回对应动作，topic 用简短名词。
+输出 JSON：{"reply":"...","action":{"type":"none"}}`;
+
+async function askAI(text) {
+  const resp = await fetch("https://api.deepseek.com/chat/completions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + AI.key },
+    body: JSON.stringify({
+      model: "deepseek-flash",
+      messages: [
+        { role: "system", content: AI_SYS },
+        { role: "user", content: briefingContext() + "\n\n读者说：" + text }
+      ],
+      response_format: { type: "json_object" },
+      temperature: 0.4
+    })
+  });
+  if (!resp.ok) throw new Error("接口返回 " + resp.status);
+  const data = await resp.json();
+  const raw = data.choices[0].message.content;
+  const m = raw.match(/\{[\s\S]*\}/);
+  return JSON.parse(m ? m[0] : raw);
+}
+
+async function syncFocusIssue(topic) {
+  const r = DATA.repo || {};
+  if (!AI.gh || !r.owner || !r.repo) return false;
+  const resp = await fetch(`https://api.github.com/repos/${r.owner}/${r.repo}/issues`, {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer " + AI.gh,
+      "Accept": "application/vnd.github+json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ title: "关注：" + topic, labels: ["focus"], body: "由看板助理添加。" })
+  });
+  return resp.ok;
+}
+
+$("ai-form").onsubmit = async (e) => {
+  e.preventDefault();
+  const input = $("ai-input");
+  const text = input.value.trim();
+  if (!text || AI.busy) return;
+  if (!AI.key) {
+    bubble("先展开下面的「设置」，填入 DeepSeek Key 再问。", "err");
+    return;
+  }
+  bubble(text, "me");
+  input.value = "";
+  AI.busy = true;
+  $("ai-send").disabled = true;
+  const wait = bubble("思考中…", "bot");
+  try {
+    const out = await askAI(text);
+    wait.textContent = out.reply || "（没有回答）";
+    const act = out.action || {};
+    if (act.type === "add_focus" && act.topic) {
+      if (!localFocus.includes(act.topic)) localFocus.push(act.topic);
+      persistFocus();
+      renderFocus();
+      const ok = await syncFocusIssue(act.topic);
+      bubble(ok ? `已加入关注：${act.topic}，明天推送生效` : `已加入本机关注：${act.topic}（没配 GitHub Token，只在本机筛选）`, "bot");
+    } else if (act.type === "remove_focus" && act.topic) {
+      localFocus = localFocus.filter((x) => x !== act.topic);
+      persistFocus();
+      renderFocus();
+      bubble(`已移除关注：${act.topic}`, "bot");
+    }
+  } catch (err) {
+    wait.className = "ai-msg err";
+    wait.textContent = "出错了：" + err.message;
+  } finally {
+    AI.busy = false;
+    $("ai-send").disabled = false;
+  }
+};
 
 /* 任何未捕获的脚本错误都显示出来，别再让它静默变成"0 条" */
 addEventListener("error", (e) => {
