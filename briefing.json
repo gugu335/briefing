@@ -1,10 +1,8 @@
 {
   "updatedAt": "2026-11-19T16:45:53+08:00",
-  "generatedAt": "2026-11-19T16:45:53+08:00",
+  "generatedAt": "2026-11-19T16:47:15+08:00",
   "tagline": "重要的事，清楚地摆在眼前。",
   "keywords": [
-    "亚太会议",
-    "APEX",
     "APEC",
     "芯片",
     "英伟达",
@@ -17,20 +15,6 @@
   },
   "items": [
     {
-      "kind": "brief",
-      "title": "习近平与高市早苗在深圳简短会面",
-      "summary": "在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手；这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，气氛紧张。专家认为，此次互动不太可能标志着中日关系出现实质性解冻。",
-      "impact": "对读者意味着中日高层沟通仍停留在礼节性接触，双边关系短期难明显回暖，涉及中日贸易、旅游与区域安全的预期不宜过度乐观。",
-      "nextStep": "关注峰会期间中日是否安排正式双边会谈及后续外长级接触。",
-      "urgency": "medium",
-      "source": "纽约时报中文网",
-      "sourceUrl": "https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS",
-      "publishedAt": "2026-11-19T10:37:31+08:00",
-      "hits": [
-        "亚太会议"
-      ]
-    },
-    {
       "kind": "alert",
       "title": "习近平深圳机场迎接特朗普，中美俄将举行三方会晤",
       "summary": "周三，特朗普抵达深圳出席亚太经合组织峰会，习近平到宝安国际机场迎接，两人握手并拥抱；这是习近平担任中国领导人十多年来首次亲自在机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。",
@@ -42,24 +26,8 @@
       "publishedAt": "2026-11-19T09:52:31+08:00",
       "hits": [
         "APEC",
-        "APEX",
         "中美",
-        "亚太会议",
         "芯片"
-      ]
-    },
-    {
-      "kind": "brief",
-      "title": "中加达成贸易协议，将进一步削减关税",
-      "summary": "加拿大总理卡尼与中国领导人习近平周二在深圳会晤，中加达成贸易协议，同意进一步削减关税；协议及两国领导人展现的友好关系，与目前的加美关系形成鲜明对比。卡尼上任以来一直致力于推动加拿大经济和政治关系多元化、减少对美国的依赖。",
-      "impact": "对读者意味着中加经贸往来有望回暖，农产品、能源等贸易流向可能调整，在美加关系紧张背景下为企业提供替代市场选择。",
-      "nextStep": "关注协议涉及的关税削减清单、生效时间及后续执行情况。",
-      "urgency": "medium",
-      "source": "纽约时报中文网",
-      "sourceUrl": "https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS",
-      "publishedAt": "2026-11-18T09:25:24+08:00",
-      "hits": [
-        "亚太会议"
       ]
     },
     {
@@ -114,6 +82,18 @@
       "hits": []
     },
     {
+      "kind": "brief",
+      "title": "习近平与高市早苗在深圳简短会面",
+      "summary": "在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手；这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，气氛紧张。专家认为，此次互动不太可能标志着中日关系出现实质性解冻。",
+      "impact": "对读者意味着中日高层沟通仍停留在礼节性接触，双边关系短期难明显回暖，涉及中日贸易、旅游与区域安全的预期不宜过度乐观。",
+      "nextStep": "关注峰会期间中日是否安排正式双边会谈及后续外长级接触。",
+      "urgency": "medium",
+      "source": "纽约时报中文网",
+      "sourceUrl": "https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS",
+      "publishedAt": "2026-11-19T10:37:31+08:00",
+      "hits": []
+    },
+    {
       "kind": "alert",
       "title": "高危漏洞Java4Shell可致远程代码执行",
       "summary": "新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏漏洞，CVSS 4.0 评分 9.2/10；可在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。",
@@ -123,6 +103,18 @@
       "source": "Solidot",
       "sourceUrl": "https://www.solidot.org/story?sid=85923",
       "publishedAt": "2026-11-18T21:27:20+08:00",
+      "hits": []
+    },
+    {
+      "kind": "brief",
+      "title": "中加达成贸易协议，将进一步削减关税",
+      "summary": "加拿大总理卡尼与中国领导人习近平周二在深圳会晤，中加达成贸易协议，同意进一步削减关税；协议及两国领导人展现的友好关系，与目前的加美关系形成鲜明对比。卡尼上任以来一直致力于推动加拿大经济和政治关系多元化、减少对美国的依赖。",
+      "impact": "对读者意味着中加经贸往来有望回暖，农产品、能源等贸易流向可能调整，在美加关系紧张背景下为企业提供替代市场选择。",
+      "nextStep": "关注协议涉及的关税削减清单、生效时间及后续执行情况。",
+      "urgency": "medium",
+      "source": "纽约时报中文网",
+      "sourceUrl": "https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS",
+      "publishedAt": "2026-11-18T09:25:24+08:00",
       "hits": []
     }
   ]
