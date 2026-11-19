@@ -103,6 +103,7 @@ body{
 .ai-set input{display:block;width:100%;margin-top:4px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;font-size:12px;outline:none}
 .ai-set button{margin-top:9px;border:0;border-radius:8px;padding:6px 12px;background:var(--violet-soft);color:var(--violet);font-size:12px;font-weight:600;cursor:pointer}
 .ai-tip{margin:8px 0 0;font-size:11px;color:var(--soft)}
+.ai-status{margin:8px 0 0;font-size:11.5px;min-height:15px;color:var(--muted)}
 
 /* feed */
 .feed{display:grid;gap:12px;padding-top:16px}
@@ -227,12 +228,14 @@ mark{background:rgba(237,177,84,.35);color:inherit;border-radius:3px;padding:0 1
     <label>DeepSeek Key<input id="ai-key" type="password" placeholder="sk-..." autocomplete="off"></label>
     <label>GitHub Token（可选，自动同步关注）<input id="ai-gh" type="password" placeholder="ghp_..." autocomplete="off"></label>
     <button type="button" id="ai-save">保存</button>
+    <button type="button" id="ai-test">测试连接</button>
+    <p class="ai-status" id="ai-status"></p>
     <p class="ai-tip">Key 只存在这台设备的浏览器里，不会上传到任何地方。</p>
   </details>
 </div>
 
 <script>
-const DATA = {"updatedAt":"2026-11-19T11:40:08+08:00","generatedAt":"2026-11-19T11:53:03+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"brief","title":"彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者","summary":"彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。","impact":"对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。","nextStep":"关注英伟达董事会的正式决定与临时 CEO 的公开表态。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/207.htm","publishedAt":"2026-11-19T11:23:57+08:00","hits":["英伟达"]},{"kind":"brief","title":"特朗普抵达深圳，习近平到机场迎接","summary":"11 月 19 日，特朗普抵达深圳宝安国际机场，习近平到机场迎接，两人在红毯上握手拥抱。报道称这是习近平十多年来首次亲自到机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。","impact":"对读者的直接含义是：中美俄三方互动与峰会议程将影响贸易、芯片出口管制与市场情绪，任何措辞变化都可能被放大解读，值得比平时更密切关注官方通稿。","nextStep":"紧盯三方会晤是否有共同表态，以及会后双方各自发布的通稿措辞。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/trump-xi-shenzhen-spy-scandal/?utm_source=RSS","publishedAt":"2026-11-19T09:52:31+08:00","hits":["中美","芯片"]},{"kind":"brief","title":"APEC 峰会期间深圳停课、居家办公，居民离城","summary":"为配合在深圳主办的亚太经合组织峰会，当地学校本周停课，地方政府指示企业员工居家办公，不少居民离开这座城市。峰会期间多条道路封闭，安保举措尤为严密。","impact":"对读者的实际影响是出行与工作安排：在深圳或近期计划前往的读者需要预留通行时间，留意临时交通管制和办公、上学安排的调整。","nextStep":"关注峰会结束后的交通恢复与复工复课通知。","urgency":"low","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS","publishedAt":"2026-11-19T09:49:06+08:00","hits":["APEC"]},{"kind":"brief","title":"谷歌发布 Gemini 4 Neon，编程智能体指数登顶","summary":"谷歌 11 月 18 日推出 AI 模型 Gemini 4 Neon，主攻复杂编程、科学研究和企业工作流程。API 每百万词元输入 3 美元、输出 15 美元，缓存输入 0.15 美元，支持 100 万 token 上下文和四档推理级别。在 Artificial Analysis 编程智能体指数以 58.6 分排名第一，智能指数以 61 分位列第三。","impact":"对读者的含义是：模型选型多了一个更低价的高能力选项，若正在为编程或文档处理类任务付费，现有成本结构可能需要重新评估；不过榜单分数与实际生产表现仍有差距。","nextStep":"关注真实任务基准结果、可用地区与调用限流规则。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/144.htm","publishedAt":"2026-11-19T07:53:51+08:00","hits":["APEC"]},{"kind":"brief","title":"中加领导人在深圳会晤，达成贸易协议削减关税","summary":"中加两国领导人周二在深圳会晤，达成贸易协议并进一步削减关税，两国关系升温。报道称，这一局面与当前的加美关系形成鲜明对比。加拿大总理卡尼上任以来一直致力于推动本国经济和政治关系多元化，减少对美国的依赖。","impact":"对读者意味着中加在农产品、能源等品类的贸易条件可能改善，相关进口成本与供应格局会随之调整；同时这也被视为中等强国在中美之间重新配置关系的信号。","nextStep":"关注协议的具体清单、降税时间表与执行细则的公布。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":["中美"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散 APEC 峰会焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办的亚太经合组织峰会展示中国的科技雄心、证明增长可以惠及世界。但黄仁勋相关丑闻和对北京的间谍指控可能转移外界注意力，中国同时需要缓解其他国家的贸易担忧。","impact":"对读者意味着峰会的经济叙事可能被安全议题牵制，外界对科技与贸易议题的关注重点可能偏离原定议程，解读峰会成果时需要区分象征性表态与实质安排。","nextStep":"关注峰会对贸易与科技议题的正式表述，及其与场外争议的相互影响。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC"]},{"kind":"brief","title":"习近平与高市早苗简短会面，中日关系无解冻迹象","summary":"在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。","impact":"对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。","nextStep":"关注双方是否安排正式双边会晤，以及后续外交部门的表态。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS","publishedAt":"2026-11-19T10:37:31+08:00","hits":[]},{"kind":"alert","title":"高危漏洞 Java4Shell 可致远程代码执行","summary":"新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏问题，CVSS 4.0 评分 9.2/10。该漏洞会在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等组件中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。","impact":"对读者意味着只要线上服务用到相关 Java 组件，就可能面临被直接入侵的风险；这类漏洞通常在公开后数小时内就会被扫描利用，拖延修补的代价远高于停机窗口。","nextStep":"先确认所用组件与版本是否在受影响范围内，盯官方补丁和修复指引的发布。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]}]};
+const DATA = {"updatedAt":"2026-11-19T11:40:08+08:00","generatedAt":"2026-11-19T11:54:20+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"brief","title":"彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者","summary":"彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。","impact":"对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。","nextStep":"关注英伟达董事会的正式决定与临时 CEO 的公开表态。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/207.htm","publishedAt":"2026-11-19T11:23:57+08:00","hits":["英伟达"]},{"kind":"brief","title":"特朗普抵达深圳，习近平到机场迎接","summary":"11 月 19 日，特朗普抵达深圳宝安国际机场，习近平到机场迎接，两人在红毯上握手拥抱。报道称这是习近平十多年来首次亲自到机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。","impact":"对读者的直接含义是：中美俄三方互动与峰会议程将影响贸易、芯片出口管制与市场情绪，任何措辞变化都可能被放大解读，值得比平时更密切关注官方通稿。","nextStep":"紧盯三方会晤是否有共同表态，以及会后双方各自发布的通稿措辞。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/trump-xi-shenzhen-spy-scandal/?utm_source=RSS","publishedAt":"2026-11-19T09:52:31+08:00","hits":["中美","芯片"]},{"kind":"brief","title":"APEC 峰会期间深圳停课、居家办公，居民离城","summary":"为配合在深圳主办的亚太经合组织峰会，当地学校本周停课，地方政府指示企业员工居家办公，不少居民离开这座城市。峰会期间多条道路封闭，安保举措尤为严密。","impact":"对读者的实际影响是出行与工作安排：在深圳或近期计划前往的读者需要预留通行时间，留意临时交通管制和办公、上学安排的调整。","nextStep":"关注峰会结束后的交通恢复与复工复课通知。","urgency":"low","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS","publishedAt":"2026-11-19T09:49:06+08:00","hits":["APEC"]},{"kind":"brief","title":"谷歌发布 Gemini 4 Neon，编程智能体指数登顶","summary":"谷歌 11 月 18 日推出 AI 模型 Gemini 4 Neon，主攻复杂编程、科学研究和企业工作流程。API 每百万词元输入 3 美元、输出 15 美元，缓存输入 0.15 美元，支持 100 万 token 上下文和四档推理级别。在 Artificial Analysis 编程智能体指数以 58.6 分排名第一，智能指数以 61 分位列第三。","impact":"对读者的含义是：模型选型多了一个更低价的高能力选项，若正在为编程或文档处理类任务付费，现有成本结构可能需要重新评估；不过榜单分数与实际生产表现仍有差距。","nextStep":"关注真实任务基准结果、可用地区与调用限流规则。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/144.htm","publishedAt":"2026-11-19T07:53:51+08:00","hits":["APEC"]},{"kind":"brief","title":"中加领导人在深圳会晤，达成贸易协议削减关税","summary":"中加两国领导人周二在深圳会晤，达成贸易协议并进一步削减关税，两国关系升温。报道称，这一局面与当前的加美关系形成鲜明对比。加拿大总理卡尼上任以来一直致力于推动本国经济和政治关系多元化，减少对美国的依赖。","impact":"对读者意味着中加在农产品、能源等品类的贸易条件可能改善，相关进口成本与供应格局会随之调整；同时这也被视为中等强国在中美之间重新配置关系的信号。","nextStep":"关注协议的具体清单、降税时间表与执行细则的公布。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":["中美"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散 APEC 峰会焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办的亚太经合组织峰会展示中国的科技雄心、证明增长可以惠及世界。但黄仁勋相关丑闻和对北京的间谍指控可能转移外界注意力，中国同时需要缓解其他国家的贸易担忧。","impact":"对读者意味着峰会的经济叙事可能被安全议题牵制，外界对科技与贸易议题的关注重点可能偏离原定议程，解读峰会成果时需要区分象征性表态与实质安排。","nextStep":"关注峰会对贸易与科技议题的正式表述，及其与场外争议的相互影响。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC"]},{"kind":"brief","title":"习近平与高市早苗简短会面，中日关系无解冻迹象","summary":"在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。","impact":"对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。","nextStep":"关注双方是否安排正式双边会晤，以及后续外交部门的表态。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS","publishedAt":"2026-11-19T10:37:31+08:00","hits":[]},{"kind":"alert","title":"高危漏洞 Java4Shell 可致远程代码执行","summary":"新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏问题，CVSS 4.0 评分 9.2/10。该漏洞会在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等组件中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。","impact":"对读者意味着只要线上服务用到相关 Java 组件，就可能面临被直接入侵的风险；这类漏洞通常在公开后数小时内就会被扫描利用，拖延修补的代价远高于停机窗口。","nextStep":"先确认所用组件与版本是否在受影响范围内，盯官方补丁和修复指引的发布。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]}]};
 
 const S = { filter: "all", q: "", kw: null, expanded: new Set() };
 const $ = (id) => document.getElementById(id);
@@ -482,7 +485,53 @@ $("ai-save").onclick = () => {
   store.set("briefing.aiKey", AI.key);
   store.set("briefing.ghToken", AI.gh);
   $("ai-save").textContent = "已保存";
+  const st = $("ai-status");
+  st.style.color = "var(--muted)";
+  st.textContent = AI.key ? `已保存，Key 末尾 ${AI.key.slice(-4)}` : "已保存，但 Key 是空的";
   setTimeout(() => { $("ai-save").textContent = "保存"; }, 1500);
+};
+
+$("ai-test").onclick = async () => {
+  const st = $("ai-status");
+  const key = ($("ai-key").value || AI.key || "").trim();
+  if (!key) {
+    st.style.color = "var(--red)";
+    st.textContent = "还没填 Key";
+    return;
+  }
+  st.style.color = "var(--muted)";
+  st.textContent = "测试中…";
+  try {
+    const r = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({
+        model: "deepseek-flash",
+        messages: [{ role: "user", content: "ping" }],
+        max_tokens: 4
+      })
+    });
+    if (r.status === 401) {
+      st.style.color = "var(--red)";
+      st.textContent = "Key 无效（401）：多半是没复制全，或这串已在平台上被删除";
+      return;
+    }
+    if (r.status === 402) {
+      st.style.color = "var(--red)";
+      st.textContent = "Key 有效但余额不足（402），去平台充值";
+      return;
+    }
+    if (!r.ok) {
+      st.style.color = "var(--red)";
+      st.textContent = "接口返回 " + r.status;
+      return;
+    }
+    st.style.color = "var(--green)";
+    st.textContent = "连接正常 ✓ Key 末尾 " + key.slice(-4) + "（记得点上面的保存）";
+  } catch (e) {
+    st.style.color = "var(--red)";
+    st.textContent = "网络错误：" + e.message + "（校园网可能拦了 API 域名）";
+  }
 };
 
 function bubble(text, cls) {
