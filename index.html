@@ -75,20 +75,7 @@ body{
 .chip[aria-pressed="true"]{border-color:var(--violet);color:var(--violet);background:var(--violet-soft);font-weight:600}
 .chip b{font-weight:700;margin-left:3px}
 
-/* focus 输入 */
-.focus{padding:14px 0 4px}
-.focus-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
-.focus-label{color:var(--ink);font-size:13px;font-weight:700}
-.focus-hint{color:var(--soft);font-size:11px}
-.focus-row{display:flex;gap:8px}
-.focus-input{flex:1;min-width:0;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-size:13.5px;outline:none}
-.focus-input:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(118,101,223,.12)}
-.focus-add{flex:none;border:0;border-radius:10px;padding:0 16px;background:var(--violet);color:#fff;font-size:13.5px;font-weight:600;cursor:pointer}
-.focus-add:active{transform:scale(.98)}
-.focus-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
-.fchip{display:inline-flex;align-items:center;gap:4px;border:1px solid #c8bffa;border-radius:999px;padding:4px 6px 4px 11px;background:var(--violet-soft);color:var(--violet);font-size:12px;cursor:pointer}
-.fchip button{border:0;background:transparent;color:var(--violet);font-size:13px;line-height:1;padding:2px 5px;cursor:pointer;opacity:.7}
-.fchip button:hover{opacity:1}
+
 
 /* AI 面板 */
 .ai-fab{position:fixed;right:18px;bottom:18px;z-index:40;border:0;border-radius:999px;padding:12px 18px;
@@ -204,18 +191,6 @@ mark{background:rgba(237,177,84,.35);color:inherit;border-radius:3px;padding:0 1
     <input class="search" id="q" type="search" placeholder="搜索标题、摘要、影响、来源…" autocomplete="off">
   </div>
 
-  <section class="focus" id="focus">
-    <div class="focus-head">
-      <span class="focus-label">我想重点关注</span>
-      <span class="focus-hint" id="focus-hint">添加后，明天的推送会把它排在最前面</span>
-    </div>
-    <div class="focus-row">
-      <input class="focus-input" id="focus-input" placeholder="例如：亚太会议、英伟达财报、油价" autocomplete="off">
-      <button class="focus-add" id="focus-add" type="button">添加</button>
-    </div>
-    <div class="focus-chips" id="focus-chips"></div>
-  </section>
-
   <div class="watch" id="watch" hidden>
     <span class="watch-label">重点关注</span>
   </div>
@@ -257,7 +232,7 @@ mark{background:rgba(237,177,84,.35);color:inherit;border-radius:3px;padding:0 1
 </div>
 
 <script>
-const DATA = {"updatedAt":"2026-11-19T11:40:08+08:00","generatedAt":"2026-11-19T11:45:32+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"brief","title":"彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者","summary":"彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。","impact":"对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。","nextStep":"关注英伟达董事会的正式决定与临时 CEO 的公开表态。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/207.htm","publishedAt":"2026-11-19T11:23:57+08:00","hits":["英伟达"]},{"kind":"brief","title":"特朗普抵达深圳，习近平到机场迎接","summary":"11 月 19 日，特朗普抵达深圳宝安国际机场，习近平到机场迎接，两人在红毯上握手拥抱。报道称这是习近平十多年来首次亲自到机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。","impact":"对读者的直接含义是：中美俄三方互动与峰会议程将影响贸易、芯片出口管制与市场情绪，任何措辞变化都可能被放大解读，值得比平时更密切关注官方通稿。","nextStep":"紧盯三方会晤是否有共同表态，以及会后双方各自发布的通稿措辞。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/trump-xi-shenzhen-spy-scandal/?utm_source=RSS","publishedAt":"2026-11-19T09:52:31+08:00","hits":["中美","芯片"]},{"kind":"brief","title":"APEC 峰会期间深圳停课、居家办公，居民离城","summary":"为配合在深圳主办的亚太经合组织峰会，当地学校本周停课，地方政府指示企业员工居家办公，不少居民离开这座城市。峰会期间多条道路封闭，安保举措尤为严密。","impact":"对读者的实际影响是出行与工作安排：在深圳或近期计划前往的读者需要预留通行时间，留意临时交通管制和办公、上学安排的调整。","nextStep":"关注峰会结束后的交通恢复与复工复课通知。","urgency":"low","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS","publishedAt":"2026-11-19T09:49:06+08:00","hits":["APEC"]},{"kind":"brief","title":"谷歌发布 Gemini 4 Neon，编程智能体指数登顶","summary":"谷歌 11 月 18 日推出 AI 模型 Gemini 4 Neon，主攻复杂编程、科学研究和企业工作流程。API 每百万词元输入 3 美元、输出 15 美元，缓存输入 0.15 美元，支持 100 万 token 上下文和四档推理级别。在 Artificial Analysis 编程智能体指数以 58.6 分排名第一，智能指数以 61 分位列第三。","impact":"对读者的含义是：模型选型多了一个更低价的高能力选项，若正在为编程或文档处理类任务付费，现有成本结构可能需要重新评估；不过榜单分数与实际生产表现仍有差距。","nextStep":"关注真实任务基准结果、可用地区与调用限流规则。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/144.htm","publishedAt":"2026-11-19T07:53:51+08:00","hits":["APEC"]},{"kind":"brief","title":"中加领导人在深圳会晤，达成贸易协议削减关税","summary":"中加两国领导人周二在深圳会晤，达成贸易协议并进一步削减关税，两国关系升温。报道称，这一局面与当前的加美关系形成鲜明对比。加拿大总理卡尼上任以来一直致力于推动本国经济和政治关系多元化，减少对美国的依赖。","impact":"对读者意味着中加在农产品、能源等品类的贸易条件可能改善，相关进口成本与供应格局会随之调整；同时这也被视为中等强国在中美之间重新配置关系的信号。","nextStep":"关注协议的具体清单、降税时间表与执行细则的公布。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":["中美"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散 APEC 峰会焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办的亚太经合组织峰会展示中国的科技雄心、证明增长可以惠及世界。但黄仁勋相关丑闻和对北京的间谍指控可能转移外界注意力，中国同时需要缓解其他国家的贸易担忧。","impact":"对读者意味着峰会的经济叙事可能被安全议题牵制，外界对科技与贸易议题的关注重点可能偏离原定议程，解读峰会成果时需要区分象征性表态与实质安排。","nextStep":"关注峰会对贸易与科技议题的正式表述，及其与场外争议的相互影响。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC"]},{"kind":"brief","title":"习近平与高市早苗简短会面，中日关系无解冻迹象","summary":"在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。","impact":"对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。","nextStep":"关注双方是否安排正式双边会晤，以及后续外交部门的表态。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS","publishedAt":"2026-11-19T10:37:31+08:00","hits":[]},{"kind":"alert","title":"高危漏洞 Java4Shell 可致远程代码执行","summary":"新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏问题，CVSS 4.0 评分 9.2/10。该漏洞会在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等组件中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。","impact":"对读者意味着只要线上服务用到相关 Java 组件，就可能面临被直接入侵的风险；这类漏洞通常在公开后数小时内就会被扫描利用，拖延修补的代价远高于停机窗口。","nextStep":"先确认所用组件与版本是否在受影响范围内，盯官方补丁和修复指引的发布。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]}]};
+const DATA = {"updatedAt":"2026-11-19T11:40:08+08:00","generatedAt":"2026-11-19T11:53:03+08:00","tagline":"重要的事，清楚地摆在眼前。","keywords":["APEC","芯片","英伟达","油价","中美"],"repo":{"owner":"gugu335","repo":"briefing"},"items":[{"kind":"brief","title":"彭博社：英伟达猎头接触 Arm CEO 哈斯物色继任者","summary":"彭博社 11 月 19 日报道，英伟达董事会聘请的猎头公司海德思哲已接触 Arm 首席执行官雷内·哈斯，将其列为接替黄仁勋的潜在人选，接触进展尚不清楚。哈斯曾在英伟达工作七年，2022 年出任 Arm CEO。其他潜在人选还包括英伟达副总裁伊恩·巴克、AMD 首席执行官苏姿丰和苹果硬件负责人约翰尼·斯鲁吉。","impact":"对读者意味着英伟达最高管理层的归属仍存变数，公司的长期战略、产品节奏与供应链关系都与之绑定；传闻名单横跨多家竞争对手，也说明这轮人事悬念的影响面超出单一公司。","nextStep":"关注英伟达董事会的正式决定与临时 CEO 的公开表态。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/207.htm","publishedAt":"2026-11-19T11:23:57+08:00","hits":["英伟达"]},{"kind":"brief","title":"特朗普抵达深圳，习近平到机场迎接","summary":"11 月 19 日，特朗普抵达深圳宝安国际机场，习近平到机场迎接，两人在红毯上握手拥抱。报道称这是习近平十多年来首次亲自到机场迎接外国政要。特朗普表示无意提起涉及黄仁勋的间谍丑闻，此行重头戏是他与习近平、普京的三方会晤。","impact":"对读者的直接含义是：中美俄三方互动与峰会议程将影响贸易、芯片出口管制与市场情绪，任何措辞变化都可能被放大解读，值得比平时更密切关注官方通稿。","nextStep":"紧盯三方会晤是否有共同表态，以及会后双方各自发布的通稿措辞。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/trump-xi-shenzhen-spy-scandal/?utm_source=RSS","publishedAt":"2026-11-19T09:52:31+08:00","hits":["中美","芯片"]},{"kind":"brief","title":"APEC 峰会期间深圳停课、居家办公，居民离城","summary":"为配合在深圳主办的亚太经合组织峰会，当地学校本周停课，地方政府指示企业员工居家办公，不少居民离开这座城市。峰会期间多条道路封闭，安保举措尤为严密。","impact":"对读者的实际影响是出行与工作安排：在深圳或近期计划前往的读者需要预留通行时间，留意临时交通管制和办公、上学安排的调整。","nextStep":"关注峰会结束后的交通恢复与复工复课通知。","urgency":"low","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261119/a-tropical-chinese-city-is-half-empty-and-ready-for-the-summit/?utm_source=RSS","publishedAt":"2026-11-19T09:49:06+08:00","hits":["APEC"]},{"kind":"brief","title":"谷歌发布 Gemini 4 Neon，编程智能体指数登顶","summary":"谷歌 11 月 18 日推出 AI 模型 Gemini 4 Neon，主攻复杂编程、科学研究和企业工作流程。API 每百万词元输入 3 美元、输出 15 美元，缓存输入 0.15 美元，支持 100 万 token 上下文和四档推理级别。在 Artificial Analysis 编程智能体指数以 58.6 分排名第一，智能指数以 61 分位列第三。","impact":"对读者的含义是：模型选型多了一个更低价的高能力选项，若正在为编程或文档处理类任务付费，现有成本结构可能需要重新评估；不过榜单分数与实际生产表现仍有差距。","nextStep":"关注真实任务基准结果、可用地区与调用限流规则。","urgency":"medium","source":"IT之家","sourceUrl":"https://www.ithome.com/1/029/144.htm","publishedAt":"2026-11-19T07:53:51+08:00","hits":["APEC"]},{"kind":"brief","title":"中加领导人在深圳会晤，达成贸易协议削减关税","summary":"中加两国领导人周二在深圳会晤，达成贸易协议并进一步削减关税，两国关系升温。报道称，这一局面与当前的加美关系形成鲜明对比。加拿大总理卡尼上任以来一直致力于推动本国经济和政治关系多元化，减少对美国的依赖。","impact":"对读者意味着中加在农产品、能源等品类的贸易条件可能改善，相关进口成本与供应格局会随之调整；同时这也被视为中等强国在中美之间重新配置关系的信号。","nextStep":"关注协议的具体清单、降税时间表与执行细则的公布。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261118/carney-china-xi-trade-apec/?utm_source=RSS","publishedAt":"2026-11-18T09:25:24+08:00","hits":["中美"]},{"kind":"brief","title":"间谍丑闻与贸易失衡或分散 APEC 峰会焦点","summary":"纽约时报中文网报道，习近平希望通过在深圳主办的亚太经合组织峰会展示中国的科技雄心、证明增长可以惠及世界。但黄仁勋相关丑闻和对北京的间谍指控可能转移外界注意力，中国同时需要缓解其他国家的贸易担忧。","impact":"对读者意味着峰会的经济叙事可能被安全议题牵制，外界对科技与贸易议题的关注重点可能偏离原定议程，解读峰会成果时需要区分象征性表态与实质安排。","nextStep":"关注峰会对贸易与科技议题的正式表述，及其与场外争议的相互影响。","urgency":"medium","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/china/20261118/xi-apec/?utm_source=RSS","publishedAt":"2026-11-18T07:19:40+08:00","hits":["APEC"]},{"kind":"brief","title":"习近平与高市早苗简短会面，中日关系无解冻迹象","summary":"在深圳举行的亚太经合组织峰会欢迎宴会前，习近平与日本首相高市早苗简短握手。这是自一年前中日爆发激烈外交争端以来两国领导人首次接触，现场气氛紧张。受访专家认为，这次互动不太可能标志中日关系出现实质性解冻。","impact":"对读者意味着中日关系短期内难以回暖，涉及日本旅游、跨境消费、日系供应链与相关资产的人，需要把政治摩擦当作持续变量而非短期噪声。","nextStep":"关注双方是否安排正式双边会晤，以及后续外交部门的表态。","urgency":"high","source":"纽约时报中文网","sourceUrl":"https://cn.nytimes.com/world/20261119/xi-jinping-china-sanae-takaichi-japan/?utm_source=RSS","publishedAt":"2026-11-19T10:37:31+08:00","hits":[]},{"kind":"alert","title":"高危漏洞 Java4Shell 可致远程代码执行","summary":"新公开的高危漏洞 Java4Shell 源自 OpenJDK Base64 解码器的内存损坏问题，CVSS 4.0 评分 9.2/10。该漏洞会在 Keycloak、Jira、Confluence、JFrog、Jenkins 和 PingFederate 等组件中导致无需身份验证的远程代码执行，在 Kafka、Solr、ElasticSearch 等中导致认证后远程代码执行。","impact":"对读者意味着只要线上服务用到相关 Java 组件，就可能面临被直接入侵的风险；这类漏洞通常在公开后数小时内就会被扫描利用，拖延修补的代价远高于停机窗口。","nextStep":"先确认所用组件与版本是否在受影响范围内，盯官方补丁和修复指引的发布。","urgency":"high","source":"Solidot","sourceUrl":"https://www.solidot.org/story?sid=85923","publishedAt":"2026-11-18T21:27:20+08:00","hits":[]}]};
 
 const S = { filter: "all", q: "", kw: null, expanded: new Set() };
 const $ = (id) => document.getElementById(id);
@@ -395,7 +370,7 @@ function render() {
 function renderWatch() {
   const kws = DATA.keywords || [];
   const box = $("watch");
-  if (!kws.length) { box.hidden = true; return; }
+  if (!kws.length && !localFocus.length) { box.hidden = true; return; }
   box.hidden = false;
   box.querySelectorAll(".chip").forEach((n) => n.remove());
   kws.forEach((k) => {
@@ -408,6 +383,7 @@ function renderWatch() {
     b.onclick = () => { S.kw = S.kw === k ? null : k; renderWatch(); render(); };
     box.appendChild(b);
   });
+  renderFocus();
 }
 
 /* 整卡点击 / 键盘可达 / 展开 */
@@ -469,8 +445,8 @@ function issueUrl(topic) {
 }
 
 function renderFocus() {
-  const box = $("focus-chips");
-  box.innerHTML = "";
+  const box = $("watch");
+  box.querySelectorAll(".fchip").forEach((n) => n.remove());
   localFocus.forEach((t) => {
     const chip = document.createElement("span");
     chip.className = "fchip";
@@ -482,32 +458,10 @@ function renderFocus() {
       renderFocus();
     };
     chip.onclick = () => { S.q = t; $("q").value = t; render(); };
+    box.hidden = false;
     box.appendChild(chip);
   });
 }
-
-$("focus-add").onclick = () => {
-  const input = $("focus-input");
-  const topic = input.value.trim();
-  if (!topic) return;
-  if (!localFocus.includes(topic)) localFocus.push(topic);
-  persistFocus();
-  renderFocus();
-  input.value = "";
-  const url = issueUrl(topic);
-  if (url) {
-    window.open(url, "_blank", "noopener");
-    $("focus-hint").textContent = "已打开 GitHub，点 Submit new issue 提交后才对明天的推送生效";
-  } else {
-    $("focus-hint").textContent = "已添加，仅在本机筛选生效";
-  }
-  S.q = topic;
-  $("q").value = topic;
-  render();
-};
-$("focus-input").addEventListener("keydown", (e) => {
-  if (e.key === "Enter") $("focus-add").click();
-});
 
 /* ---------- 问 AI 面板 ---------- */
 const AI = { key: store.get("briefing.aiKey") || "", gh: store.get("briefing.ghToken") || "", busy: false };
